@@ -4,31 +4,26 @@ module.exports = {
     get: () => {
         return {
           allActions: {
-            Test: require('components/Test/actions').default,
             Router: require('reactium-core/components/Router/actions').default,
             Toolkit: require('reactium-core/components/Toolkit/actions').default,
           },
           allActionTypes: {
-            Test: require('components/Test/actionTypes').default,
             Router: require('reactium-core/components/Router/actionTypes').default,
             Toolkit: require('reactium-core/components/Toolkit/actionTypes').default,
           },
           allReducers: {
-            Test: require('components/Test/reducers').default,
             Router: require('reactium-core/components/Router/reducers').default,
             Toolkit: require('reactium-core/components/Toolkit/reducers').default,
           },
           allInitialStates: {
-            Test: require('components/Test/state').default,
             Router: require('reactium-core/components/Router/state').default,
             Toolkit: require('reactium-core/components/Toolkit/state').default,
           },
           allRoutes: {
-            Test: require('components/Test/route').default,
+            Calculator: require('components/Calculator/route').default,
             Toolkit: require('reactium-core/components/Toolkit/route').default,
           },
           allServices: {
-            Test: require('components/Test/services').default,
             Toolkit: require('reactium-core/components/Toolkit/services').default,
           },
 
@@ -39,7 +34,6 @@ module.exports = {
   "allActions": {
     "type": "actions",
     "imports": [
-      "components/Test/actions",
       "reactium-core/components/Router/actions",
       "reactium-core/components/Toolkit/actions"
     ]
@@ -47,7 +41,6 @@ module.exports = {
   "allActionTypes": {
     "type": "actionTypes",
     "imports": [
-      "components/Test/actionTypes",
       "reactium-core/components/Router/actionTypes",
       "reactium-core/components/Toolkit/actionTypes"
     ]
@@ -55,7 +48,6 @@ module.exports = {
   "allReducers": {
     "type": "reducers",
     "imports": [
-      "components/Test/reducers",
       "reactium-core/components/Router/reducers",
       "reactium-core/components/Toolkit/reducers"
     ]
@@ -63,7 +55,6 @@ module.exports = {
   "allInitialStates": {
     "type": "state",
     "imports": [
-      "components/Test/state",
       "reactium-core/components/Router/state",
       "reactium-core/components/Toolkit/state"
     ]
@@ -71,14 +62,13 @@ module.exports = {
   "allRoutes": {
     "type": "route",
     "imports": [
-      "components/Test/route",
+      "components/Calculator/route",
       "reactium-core/components/Toolkit/route"
     ]
   },
   "allServices": {
     "type": "services",
     "imports": [
-      "components/Test/services",
       "reactium-core/components/Toolkit/services"
     ]
   }

@@ -30,10 +30,9 @@ module.exports = () => {
                 "!{src/assets/design-system,src/assets/design-system/**}",
             ],
             style: [
-                "src/assets/**/*.less",
-                "src/assets/**/*.scss",
-                "src/assets/**/*.sass",
-                "src/assets/design-system/src/assets/toolkit/styles/**/*.scss",
+                "src/**/*.scss",
+                "src/**/*.sass",
+                "src/**/*.less",
                 ".core/components/**/*.scss"
             ],
             assets: [

@@ -1,5 +1,108 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     overflow-x: hidden;
     padding: 0;
     margin: 0;
+}
+
+// Responsive
+@mixin breakpoint($size) {
+  @if $size == xs {
+    @media (max-width: $break-xs) { @content; }
+  }
+
+  @else if $size == sm {
+    @media (min-width: $break-sm) { @content; }
+  }
+
+  @else if $size == md {
+    @media (min-width: $break-md) { @content; }
+  }
+
+  @else if $size == lg {
+    @media (min-width: $break-lg) { @content; }
+  }
+
+  @else {
+    @warn "Breakpoint mixin supports: xs, sm, md, lg";
+  }
+}
+
+@mixin flexLayout() {
+    &.center {
+        justify-content: center;
+    }
+
+    &.right {
+        justify-content: flex-end;
+    }
+
+    &.left {
+        justify-content: flex-start;
+    }
+
+    &.top {
+        align-items: flex-start;
+    }
+
+    &.middle {
+        align-items: center;
+    }
+
+    &.bottom {
+        align-items: flex-end;
+    }
+
+    &.stretch {
+        align-items: stretch;
+    }
+}
+
+/** Flexbox **/
+.flex {
+    display: flex;
+
+    @include flexLayout;
+
+    &.wrap {
+        flex-wrap: wrap;
+    }
+
+    &.reverse {
+        flex-wrap: wrap-reverse;
+    }
+
+    .grow {
+        flex-grow: 1;
+    }
+}
+
+/** Grid **/
+.grid {
+    display: block;
+    width: 100%;
+
+    .row {
+        @extend .flex;
+        flex-wrap: wrap;
+
+        @for $i from 1 through $grid-columns {
+            .col-#{$i} {
+                width: percentage($i/$grid-columns);
+            }
+        }
+
+        @each $size in $sizes {
+            @include breakpoint($size) {
+                @for $i from 1 through $grid-columns {
+                    .col-#{$size}-#{$i} {
+                        width: percentage($i/$grid-columns);
+                    }
+                }
+            }
+        }
+    }
 }

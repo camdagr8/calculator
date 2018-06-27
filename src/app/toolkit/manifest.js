@@ -9,9 +9,6 @@ module.exports = {
         "name": "Default",
         "css": "/assets/style/style.css",
         "selected": true
-    }, {
-        "name": "Test",
-        "css": "/assets/style/style-test.css"
     }],
     "sidebar": {
         "closed": false,

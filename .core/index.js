@@ -17,7 +17,7 @@ const app     = express();
 
 let node_env  = (process.env.hasOwnProperty('NODE_ENV')) ? process.env.NODE_ENV : 'development';
 let port      = (process.env.hasOwnProperty('APP_PORT')) ? process.env.APP_PORT : '3030';
-port          = (node_env === 'production') ? '8080' : port;
+//port          = (node_env === 'production') ? '8080' : port;
 
 global.parseAppId = apiConfig.parseAppId;
 global.restAPI    = apiConfig.restAPI;

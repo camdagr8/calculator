@@ -61,7 +61,6 @@ typings/
 # Output of build
 dist
 public
-build
 
 ##### OS generated files
 .DS_Store

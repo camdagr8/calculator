@@ -87,7 +87,7 @@ body {
 
     .row {
         @extend .flex;
-        flex-wrap: wrap;
+        @extend .flex.wrap;
 
         @for $i from 1 through $grid-columns {
             .col-#{$i} {

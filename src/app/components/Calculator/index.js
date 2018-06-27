@@ -24,10 +24,10 @@ export default class Calculator extends Component {
         this.target = null;
 
         // bindings
-        this.calculate = this.calculate.bind(this);
-        this.onInputKeyPress = this.onInputKeyPress.bind(this);
-        this.onInputFocus = this.onInputFocus.bind(this);
-        this.onKeyPadClick = this.onKeyPadClick.bind(this);
+        this.calculate        = this.calculate.bind(this);
+        this.onInputKeyPress  = this.onInputKeyPress.bind(this);
+        this.onInputFocus     = this.onInputFocus.bind(this);
+        this.onKeyPadClick    = this.onKeyPadClick.bind(this);
         this.onOperatorChange = this.onOperatorChange.bind(this);
 
         this.state = { ...this.props };
@@ -66,7 +66,6 @@ export default class Calculator extends Component {
     }
 
     onKeyPadClick(e, key) {
-        e.target.blur();
         let { left, right, total } = this.inputs;
         let { target = null } = this;
 
@@ -80,10 +79,11 @@ export default class Calculator extends Component {
                 break;
 
             case 'clear':
-                left.value = '';
+                left.value  = '';
                 right.value = '';
                 total.value = '';
                 left.focus();
+                this.setState({total: ''});
                 break;
 
             case 'toggle':
@@ -98,7 +98,7 @@ export default class Calculator extends Component {
     }
 
     onOperatorChange(e, operator) {
-        this.setState({ operator });
+        this.setState({ operator, total: '' });
     }
 
     render() {
@@ -121,7 +121,7 @@ export default class Calculator extends Component {
                                 type={'number'}
                                 onFocus={this.onInputFocus}
                                 onKeyUp={this.onInputKeyPress}
-                                ref={(elm) => { this.inputs['left'] = elm; }} />
+                                ref={(elm) => { this.inputs['left'] = elm; this.target = elm }} />
                             <Operator
                                 value={operator}
                                 operators={operators}
@@ -161,8 +161,8 @@ export default class Calculator extends Component {
 }
 
 Calculator.defaultProps = {
-    total: '',
-    title: 'Calculator',
-    operator: '+',
-    operators: ['+', '-']
+    total     : '',
+    operator  : '+',
+    operators : ['+', '-'],
+    title     : 'Calculator',
 };

@@ -57,7 +57,8 @@
             font-weight: bold;
         }
 
-        &:focus {
+        &:focus,
+        &.active {
             box-shadow: 0px 0px 5px 1px rgba(255,86,41,0.5);
             z-index: 10000;
         }

@@ -111,7 +111,6 @@ var Calculator = function (_Component) {
     }, {
         key: 'onKeyPadClick',
         value: function onKeyPadClick(e, key) {
-            e.target.blur();
             var _inputs2 = this.inputs,
                 left = _inputs2.left,
                 right = _inputs2.right,
@@ -136,6 +135,7 @@ var Calculator = function (_Component) {
                     right.value = '';
                     total.value = '';
                     left.focus();
+                    this.setState({ total: '' });
                     break;
 
                 case 'toggle':
@@ -154,7 +154,7 @@ var Calculator = function (_Component) {
     }, {
         key: 'onOperatorChange',
         value: function onOperatorChange(e, operator) {
-            this.setState({ operator: operator });
+            this.setState({ operator: operator, total: '' });
         }
     }, {
         key: 'render',
@@ -200,7 +200,7 @@ var Calculator = function (_Component) {
                                 onFocus: this.onInputFocus,
                                 onKeyUp: this.onInputKeyPress,
                                 ref: function ref(elm) {
-                                    _this2.inputs['left'] = elm;
+                                    _this2.inputs['left'] = elm;_this2.target = elm;
                                 } }),
                             _react2.default.createElement(_Operator2.default, {
                                 value: operator,
@@ -263,7 +263,7 @@ exports.default = Calculator;
 
 Calculator.defaultProps = {
     total: '',
-    title: 'Calculator',
     operator: '+',
-    operators: ['+', '-']
+    operators: ['+', '-'],
+    title: 'Calculator'
 };

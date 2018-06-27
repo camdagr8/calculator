@@ -50,7 +50,7 @@ var app = (0, _express2.default)();
 
 var node_env = process.env.hasOwnProperty('NODE_ENV') ? process.env.NODE_ENV : 'development';
 var port = process.env.hasOwnProperty('APP_PORT') ? process.env.APP_PORT : '3030';
-port = node_env === 'production' ? '8080' : port;
+//port          = (node_env === 'production') ? '8080' : port;
 
 global.parseAppId = _config2.default.parseAppId;
 global.restAPI = _config2.default.restAPI;

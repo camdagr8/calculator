@@ -66,7 +66,7 @@ export default class Keypad extends Component {
                         let { label, value, alt } = item;
 
                         if (value === 'toggle') {
-                            label = operators.join('/');
+                            label = operators.join('|');
                         }
 
                         return (
@@ -103,6 +103,6 @@ Keypad.defaultProps = {
         {value: 'backspace', label: '&larr;', alt: 'backspace'},
         {value: 0, label: 0, alt: 'number zero'},
         {value: 'clear', label: 'clear', alt: 'clear'},
-        {value: 'toggle', label: '+/-', alt: 'change operator'},
+        {value: 'toggle', label: '+|-', alt: 'change operator'},
     ]
 };

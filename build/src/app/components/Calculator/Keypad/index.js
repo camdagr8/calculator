@@ -117,7 +117,7 @@ var Keypad = function (_Component) {
 
 
                         if (value === 'toggle') {
-                            label = operators.join('/');
+                            label = operators.join('|');
                         }
 
                         return _react2.default.createElement(
@@ -150,5 +150,5 @@ exports.default = Keypad;
 Keypad.defaultProps = {
     onKeyClick: null,
     operators: ['+', '-'],
-    keys: [{ value: 1, label: 1, alt: 'number 1' }, { value: 2, label: 2, alt: 'number 2' }, { value: 3, label: 3, alt: 'number 3' }, { value: 4, label: 4, alt: 'number 4' }, { value: 5, label: 5, alt: 'number 5' }, { value: 6, label: 6, alt: 'number 6' }, { value: 7, label: 7, alt: 'number 7' }, { value: 8, label: 8, alt: 'number 8' }, { value: 9, label: 9, alt: 'number 9' }, { value: 'backspace', label: '&larr;', alt: 'backspace' }, { value: 0, label: 0, alt: 'number zero' }, { value: 'clear', label: 'clear', alt: 'clear' }, { value: 'toggle', label: '+/-', alt: 'change operator' }]
+    keys: [{ value: 1, label: 1, alt: 'number 1' }, { value: 2, label: 2, alt: 'number 2' }, { value: 3, label: 3, alt: 'number 3' }, { value: 4, label: 4, alt: 'number 4' }, { value: 5, label: 5, alt: 'number 5' }, { value: 6, label: 6, alt: 'number 6' }, { value: 7, label: 7, alt: 'number 7' }, { value: 8, label: 8, alt: 'number 8' }, { value: 9, label: 9, alt: 'number 9' }, { value: 'backspace', label: '&larr;', alt: 'backspace' }, { value: 0, label: 0, alt: 'number zero' }, { value: 'clear', label: 'clear', alt: 'clear' }, { value: 'toggle', label: '+|-', alt: 'change operator' }]
 };

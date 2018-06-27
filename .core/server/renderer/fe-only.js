@@ -1,6 +1,7 @@
 module.exports = (req, res, context) => {
-    return `<html>
+    return `<!DOCTYPE html>
         <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
             ${req.styles}
         </head>
         <body>

@@ -4,9 +4,10 @@
  * Imports
  * -----------------------------------------------------------------------------
  */
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Keypad from 'components/Calculator/Keypad';
 import Operator from 'components/Calculator/Operator';
+import { Helmet } from 'react-helmet';
 
 
 /**
@@ -101,55 +102,67 @@ export default class Calculator extends Component {
     }
 
     render() {
-        let { total = '', operator, operators } = this.state;
+        let { total = '', operator, operators, title } = this.state;
         return (
-            <div className={'calculator'}>
-                <div className={'box'}>
-                    <div className={'group flex stretch'}>
-                        <input
-                            type={'number'}
-                            onFocus={this.onInputFocus}
-                            onKeyUp={this.onInputKeyPress}
-                            ref={(elm) => { this.inputs['left'] = elm; }} />
-                        <Operator
-                            value={operator}
-                            operators={operators}
-                            title={'click to change operator'}
-                            onChange={this.onOperatorChange}
-                            ref={(elm) => { this.inputs['operator'] = elm; }} />
-                        <input
-                            type={'number'}
-                            onFocus={this.onInputFocus}
-                            onKeyUp={this.onInputKeyPress}
-                            ref={(elm) => { this.inputs['right'] = elm; }} />
-                        <button
-                            type={'button'}
-                            onClick={this.calculate}
-                            title={'Calculate'}>=</button>
-                        <input
-                            type={'text'}
-                            value={total}
-                            readOnly={true}
-                            className={'grow number'}
-                            onKeyUp={this.onInputKeyPress}
-                            ref={(elm) => { this.inputs['total'] = elm; }} />
+            <Fragment>
+                <Helmet titleTemplate="Calculator">
+                    <title>{title}</title>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                    <meta name="description" content="Startups.co Code Challenge"/>
+                    <meta property="og:title" content={title} />
+                    <meta property="og:type" content="article" />
+                    <html lang="en" />
+                    <body className="test-component" />
+                </Helmet>
+                <div className={'calculator'}>
+                    <div className={'box'}>
+                        <div className={'group flex stretch'}>
+                            <input
+                                type={'number'}
+                                onFocus={this.onInputFocus}
+                                onKeyUp={this.onInputKeyPress}
+                                ref={(elm) => { this.inputs['left'] = elm; }} />
+                            <Operator
+                                value={operator}
+                                operators={operators}
+                                title={'click to change operator'}
+                                onChange={this.onOperatorChange}
+                                ref={(elm) => { this.inputs['operator'] = elm; }} />
+                            <input
+                                type={'number'}
+                                onFocus={this.onInputFocus}
+                                onKeyUp={this.onInputKeyPress}
+                                ref={(elm) => { this.inputs['right'] = elm; }} />
+                            <button
+                                type={'button'}
+                                onClick={this.calculate}
+                                title={'Calculate'}>=</button>
+                            <input
+                                type={'text'}
+                                value={total}
+                                readOnly={true}
+                                className={'grow number'}
+                                onKeyUp={this.onInputKeyPress}
+                                ref={(elm) => { this.inputs['total'] = elm; }} />
+                        </div>
+                    </div>
+
+                    <div className={'box'}>
+                        <Keypad onKeyClick={this.onKeyPadClick} operators={operators} />
+                    </div>
+
+                    <div className={'box'}>
+                        <button className={'primary block'} onClick={this.calculate}>Calculate</button>
                     </div>
                 </div>
-
-                <div className={'box'}>
-                    <Keypad onKeyClick={this.onKeyPadClick} operators={operators} />
-                </div>
-
-                <div className={'box'}>
-                    <button className={'primary block'} onClick={this.calculate}>Calculate</button>
-                </div>
-            </div>
+            </Fragment>
         );
     }
 }
 
 Calculator.defaultProps = {
     total: '',
+    title: 'Calculator',
     operator: '+',
     operators: ['+', '-']
 };
